@@ -15,7 +15,7 @@ const hashPassword =  async (password, salt = null) => {
         console.error(err);
     }
 }
-
+// userService
 module.exports = {
     isEmailNicknameExist: async (email, nickname) => {
 
@@ -25,10 +25,10 @@ module.exports = {
                     nickname
                 }
             });
-    
+     
             if (alreadyNickname) {
                 return message.ALREADY_NICKNAME;
-            }
+            } 
             return null;
         } catch (err) {
             console.error(err);
