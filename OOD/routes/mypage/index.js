@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mypageController = require('../../controller/myPageController');
+const mypageController = require('../../controller/mypageController');
 const authUtil = require('../../middleware/authUtil')
 
 // 총 기록 게시물 가져오기
