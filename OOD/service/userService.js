@@ -28,7 +28,18 @@ module.exports = {
      
             if (alreadyNickname) {
                 return message.ALREADY_NICKNAME;
+            }
+
+            const alreadyNickname = await User.findOne({
+                where : {
+                    email
+                }
+            });
+     
+            if (alreadyEmail) {
+                return message.ALREADY_EMAIL;
             } 
+
             return null;
         } catch (err) {
             console.error(err);
