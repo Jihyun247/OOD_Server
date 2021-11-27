@@ -176,7 +176,7 @@ module.exports = {
                         [Op.between] : [startDate, endDate]
                     }
                 },
-                attributes : ['id', 'user_id'],
+                attributes : ['id', 'user_id', 'created_at'],
                 order : [['created_at', 'DESC']],
                 raw : true,
             });
