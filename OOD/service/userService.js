@@ -30,7 +30,7 @@ module.exports = {
                 return message.ALREADY_NICKNAME;
             }
 
-            const alreadyNickname = await User.findOne({
+            const alreadyEmail = await User.findOne({
                 where : {
                     email
                 }

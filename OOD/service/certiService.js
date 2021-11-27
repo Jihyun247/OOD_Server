@@ -79,7 +79,7 @@ module.exports = {
                     id : certi_id,
                     user_id
                 },
-                attributes : ['ex_time', 'ex_intensity', 'ex_evalu', 'ex_comment', 'user_id', 'created_at'],
+                attributes : ['ex_time', 'certi_sport', 'ex_intensity', 'ex_evalu', 'ex_comment', 'user_id', 'created_at'],
                 raw : true,
             });
             certi.parse_date = await dateService.parseDate(certi.created_at);
@@ -94,21 +94,21 @@ module.exports = {
             images = images.map(i => i.image)
             const certiImages = images.join()
 
-            // 운동 종목
-            let sports = await CertiSport.findAll({
-                where : {
-                    certi_id,
-                },
-                attributes : ['sport_id']
-            });
-            sports = sports.map(s => s.sport_id)
-            const certiSports = sports.join()
-
-            certi.sports = certiSports;
             certi.certi_images = certiImages;
             if (!certiImages) {
                 certi.certi_images = ""
             }
+
+            // 운동 종목
+            // let sports = await CertiSport.findAll({
+            //     where : {
+            //         certi_id,
+            //     },
+            //     attributes : ['sport_id']
+            // });
+            // sports = sports.map(s => s.sport_id)
+            // const certiSports = sports.join()
+            //certi.sports = certiSports;
 
             return {user, certi}
 

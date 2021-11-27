@@ -45,10 +45,11 @@ module.exports = {
 
             // 기록 생성
             const newCerti = await Certification.create({
-                ex_time : ex_time,
-                ex_intensity : ex_intensity,
-                ex_evalu : ex_evalu,
-                ex_comment : ex_comment,
+                ex_time,
+                certi_sport,
+                ex_intensity,
+                ex_evalu,
+                ex_comment,
                 user_id,
             })
             const id = newCerti.id
@@ -62,7 +63,7 @@ module.exports = {
             })
 
             // 기록 운동 종목 저장
-            const saveCertiSport = await certiService.saveCertiSport(id, certi_sport);
+            //const saveCertiSport = await certiService.saveCertiSport(id, certi_sport);
 
             return res.status(code.OK).send(util.success(code.OK, message.POST_CERTI_BODY_SUCCESS, id));
 
@@ -84,7 +85,7 @@ module.exports = {
 
         try {
 
-            const updateContent = {ex_time, ex_intensity, ex_evalu, ex_comment};
+            const updateContent = {ex_time, certi_sport, ex_intensity, ex_evalu, ex_comment};
             const changedCerti = await Certification.update(updateContent, {
                 where : {
                     id : certi_id,
@@ -92,13 +93,13 @@ module.exports = {
                 }
             });
 
-            const deleteCertiSport = await CertiSport.destroy({
-                where: {
-                    certi_id
-                }
+            // const deleteCertiSport = await CertiSport.destroy({
+            //     where: {
+            //         certi_id
+            //     }
 
-            });
-            const saveCertiSport = await certiService.saveCertiSport(certi_id, certi_sport);
+            // });
+            // const saveCertiSport = await certiService.saveCertiSport(certi_id, certi_sport);
 
             res.status(code.OK).send(util.success(code.OK, message.UPDATE_CERTI_SUCCESS));
 
@@ -137,11 +138,11 @@ module.exports = {
                     certi_id
                 }
             });
-            const deleteCertiSport = await CertiSport.destroy({
-                where : {
-                    certi_id
-                }
-            });
+            // const deleteCertiSport = await CertiSport.destroy({
+            //     where : {
+            //         certi_id
+            //     }
+            // });
 
             return res.status(code.OK).send(util.success(code.OK, message.DELETE_COMMENT_SUCCESS));
 

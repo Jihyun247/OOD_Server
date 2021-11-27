@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(50),
             allowNull: false,
         },
+        certi_sport: { // 운동종목
+            type: DataTypes.STRING(50),
+            allowNull: false,
+        },
         ex_intensity: { // 운동강도
             type: DataTypes.STRING(10),
             allowNull: false,
