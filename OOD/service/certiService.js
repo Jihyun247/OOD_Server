@@ -82,7 +82,8 @@ module.exports = {
                 attributes : ['ex_time', 'certi_sport', 'ex_intensity', 'ex_evalu', 'ex_comment', 'user_id', 'created_at'],
                 raw : true,
             });
-            certi.parse_date = await dateService.parseDate(certi.created_at);
+            certi.parse_date = moment.tz(date, 'Asia/Seoul').format('YYYY년 M월 D일')
+            // await dateService.parseDate(certi.created_at);
             
             // 인증 게시물에 포함된 인증 사진들
             let images = await CertiImage.findAll({
